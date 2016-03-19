@@ -12,13 +12,18 @@ import org.springframework.web.bind.annotation.RestController
 public class Point {
     private int total = 0;
 
-    @RequestMapping(method = RequestMethod.POST)
-    public int addPoint(@RequestParam("point") int point) {
-        return total += point;
-    }
-
     @RequestMapping(method = RequestMethod.GET)
     public int getPoint() {
         return total;
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public int postPoint(@RequestParam("point") int point) {
+        return addPoint(point);
+    }
+
+    @RequestMapping("/add")
+    public int addPoint(@RequestParam("point") int point) {
+        return total += point;
     }
 }

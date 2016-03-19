@@ -8,22 +8,25 @@
 		<script src="js/vue.js"></script>
 		<script type="text/javascript">
 $(function() {
-	new Vue({
+	var vue = new Vue({
 		el: '#app',
-		data: {
-			point: 10
-		},
+		data: {point: "-"},
 		methods: {
 			add: function() {
-				var self = this;
 				$.post("point",
 				 	{point:10}
 				).done(function(data) {
-					self.point = data
+					vue.point = data
 				})
 			}
 		}
 	})
+	$.get(
+	"/point"
+	).done(function(data) {
+		vue.point = data
+	})
+
 });
 		</script>
 	</head>
