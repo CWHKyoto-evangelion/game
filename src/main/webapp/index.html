@@ -9,15 +9,20 @@
 		<script type="text/javascript">
 $(function() {
 	new Vue({
-	  el: '#app',
-	  data: {
-		point: 10
-	  },
-	  methods: {
-	  	add: function() {
-	  	  this.point += 1;
-	  	}
-	  }
+		el: '#app',
+		data: {
+			point: 10
+		},
+		methods: {
+			add: function() {
+				var self = this;
+				$.post("point",
+				 	{point:10}
+				).done(function(data) {
+					self.point = data
+				})
+			}
+		}
 	})
 });
 		</script>
