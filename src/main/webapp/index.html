@@ -24,17 +24,21 @@
 		<!-- Views -->
 		<div class="views">
 			<!-- Your main view, should have "view-main" class -->
-			<div class="view view-main">
+			<div class="view view-main" id="app">
 				<!-- Pages container, because we use fixed-through navar and toolbar, it has additional appropriate classes-->
 				<div class="tabs toolbar-through">
 					<div id="home" class="tab active">
-						ペットが元気に遊んでいる画面です
+						<img class="character" src="/images/main{{ level }}.gif">
 					</div>
 					<div id="qr-code" class="tab">
-						QRコードリーダーが開きます
-						<div id="app" class="page-content">
-							<button @click="add">QRコードをスキャンしたと思ってください。</button>
-							ecoポイント: {{point}}ポイント
+						<div class="card">
+							<div class="card-header">QRコードリーダー</div>
+							<div class="card-content">
+								<div class="card-content-inner">QRコードリーダーが開いているつもりで見てください。</div>
+							</div>
+							<div class="card-footer">
+								<button class="button" @click="scan">QRコードスキャン</button>
+							</div>
 						</div>
 					</div>
 					<div id="share" class="tab">

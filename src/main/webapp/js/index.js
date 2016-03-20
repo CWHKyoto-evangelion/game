@@ -7,9 +7,23 @@ var mainView = myApp.addView('.view-main', {
 $(function() {
 	var vue = new Vue({
 		el: '#app',
-		data: {point: "-"},
+		data: {
+		    point: "-",
+		},
+		computed: {
+    		level: function() {
+    		    var point = this.point;
+    		    if (point == "-" || point < 100) {
+    		        return 1;
+    		    }
+    		    if (point < 300) {
+    		        return Math.floor(point / 100 + 1);
+    		    }
+    		    return 3;
+    		}
+		},
 		methods: {
-			add: function() {
+			scan: function() {
 				$.post("point",
 				 	{point:10}
 				).done(function(data) {

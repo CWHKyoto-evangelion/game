@@ -26,4 +26,9 @@ public class Point {
     public int addPoint(@RequestParam("point") int point) {
         return total += point;
     }
+
+    @RequestMapping("/clear")
+    public int clearPoint() {
+        return total = 0;
+    }
 }

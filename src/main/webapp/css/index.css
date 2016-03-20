@@ -15,3 +15,7 @@ div.tabs {
     background-size:cover;
     height: 100%;
 }
+
+img.character {
+    height:256px;
+}
