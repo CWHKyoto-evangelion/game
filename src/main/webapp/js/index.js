@@ -1,3 +1,9 @@
+
+var myApp = new Framework7();
+var mainView = myApp.addView('.view-main', {
+    domCache: true //enable inline pages
+});
+
 $(function() {
 	var vue = new Vue({
 		el: '#app',

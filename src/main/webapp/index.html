@@ -4,10 +4,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<title>echotch</title>
+		<title>えこっち</title>
 		<link rel="stylesheet" href="css/framework7.ios.min.css">
 		<link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+		<link rel="stylesheet" href="css/icono.min.css">
+		<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
 		<!-- Status bar overlay for full screen mode (PhoneGap) -->
@@ -24,34 +25,32 @@
 		<div class="views">
 			<!-- Your main view, should have "view-main" class -->
 			<div class="view view-main">
-				<!-- Top Navbar-->
-				<div class="navbar">
-					<div class="navbar-inner">
-						<div class="center sliding">えこっち</div>
-						<div class="right">
-							<!--
-							  Right link contains only icon - additional "icon-only" class
-							  Additional "open-panel" class tells app to open panel when we click on this link
-							<a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-							-->
+				<!-- Pages container, because we use fixed-through navar and toolbar, it has additional appropriate classes-->
+				<div class="tabs toolbar-through">
+					<div id="home" class="tab active">
+						ペットが元気に遊んでいる画面です
+					</div>
+					<div id="qr-code" class="tab">
+						QRコードリーダーが開きます
+						<div id="app" class="page-content">
+							<button @click="add">QRコードをスキャンしたと思ってください。</button>
+							ecoポイント: {{point}}ポイント
 						</div>
 					</div>
-				</div>
-				<!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-				<div class="navbar-through toolbar-through">
-					<div data-page="qr" class="page">
-						<div id="app" class="page-content">
-							{{point}}
-							<button @click="add">add</button>
-						</div>
+					<div id="share" class="tab">
+						SNSに投稿できる画面
+					</div>
+					<div id="more" class="tab">
+						ペットの一覧
 					</div>
 				</div>
 				<!-- Bottom Toolbar-->
-				<div class="toolbar">
+				<div class="toolbar tabbar tabbar-labels">
 					<div class="toolbar-inner">
-						<!-- Toolbar links -->
-						<a href="#" class="link">Link 1</a>
-						<a href="#" class="link">Link 2</a>
+						<a href="#home" class="tab-link active"><i class="icon icono-home"></i><span class="tabbar-label">Home</span></a>
+						<a href="#qr-code" class="tab-link"><i class="icon icono-camera"></i><span class="tabbar-label">QRcode</span></a>
+						<a href="#share" class="tab-link"><i class="icon icono-disqus"></i><span class="tabbar-label">Share</span></a>
+						<a href="#more" class="tab-link"><i class="icon icono-plusCircle"></i><span class="tabbar-label">More</span></a>
 					</div>
 				</div>
 			</div>
@@ -59,8 +58,7 @@
 
 		<script src="js/jquery-2.2.0.js"></script>
 		<script src="js/vue.js"></script>
-		<!-- Path to Framework7 Library JS-->
-		<script type="text/javascript" src="path/to/framework7.min.js"></script>
+		<script src="js/framework7.min.js"></script>
 		<script src="js/index.js"></script>
 	</body>
 </html>
