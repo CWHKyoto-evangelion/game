@@ -2,38 +2,63 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>echotch</title>
-		<link href="css/pure-release-0.6.0/pure.css" rel="stylesheet" type="text/css" media="all" />
-		<script src="js/jquery-2.2.0.js"></script>
-		<script src="js/vue.js"></script>
-		<script type="text/javascript">
-$(function() {
-	var vue = new Vue({
-		el: '#app',
-		data: {point: "-"},
-		methods: {
-			add: function() {
-				$.post("point",
-				 	{point:10}
-				).done(function(data) {
-					vue.point = data
-				})
-			}
-		}
-	})
-	$.get(
-	"/point"
-	).done(function(data) {
-		vue.point = data
-	})
-
-});
-		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<title>えこっち</title>
+		<link rel="stylesheet" href="css/framework7.ios.min.css">
+		<link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+		<link rel="stylesheet" href="css/icono.min.css">
+		<link rel="stylesheet" href="css/index.css">
 	</head>
 	<body>
-		<div id="app">
-			{{point}}
-			<button @click="add">add</button>
+		<!-- Status bar overlay for full screen mode (PhoneGap) -->
+		<div class="statusbar-overlay"></div>
+		<!-- Panels overlay-->
+		<div class="panel-overlay"></div>
+		<!-- Left panel with reveal effect-->
+		<div class="panel panel-left panel-reveal">
+			<div class="content-block">
+				<p>Left panel content goes here</p>
+			</div>
 		</div>
+		<!-- Views -->
+		<div class="views">
+			<!-- Your main view, should have "view-main" class -->
+			<div class="view view-main">
+				<!-- Pages container, because we use fixed-through navar and toolbar, it has additional appropriate classes-->
+				<div class="tabs toolbar-through">
+					<div id="home" class="tab active">
+						ペットが元気に遊んでいる画面です
+					</div>
+					<div id="qr-code" class="tab">
+						QRコードリーダーが開きます
+						<div id="app" class="page-content">
+							<button @click="add">QRコードをスキャンしたと思ってください。</button>
+							ecoポイント: {{point}}ポイント
+						</div>
+					</div>
+					<div id="share" class="tab">
+						SNSに投稿できる画面
+					</div>
+					<div id="more" class="tab">
+						ペットの一覧
+					</div>
+				</div>
+				<!-- Bottom Toolbar-->
+				<div class="toolbar tabbar tabbar-labels">
+					<div class="toolbar-inner">
+						<a href="#home" class="tab-link active"><i class="icon icono-home"></i><span class="tabbar-label">Home</span></a>
+						<a href="#qr-code" class="tab-link"><i class="icon icono-camera"></i><span class="tabbar-label">QRcode</span></a>
+						<a href="#share" class="tab-link"><i class="icon icono-disqus"></i><span class="tabbar-label">Share</span></a>
+						<a href="#more" class="tab-link"><i class="icon icono-plusCircle"></i><span class="tabbar-label">More</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/jquery-2.2.0.js"></script>
+		<script src="js/vue.js"></script>
+		<script src="js/framework7.min.js"></script>
+		<script src="js/index.js"></script>
 	</body>
 </html>
