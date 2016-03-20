@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<!DOCTYPE html>
+<html>
 	<head>
 		<meta charset="utf-8" />
 		<title>echotch</title>
@@ -8,10 +8,32 @@
 		<script src="js/vue.js"></script>
 		<script type="text/javascript">
 $(function() {
+	var vue = new Vue({
+		el: '#app',
+		data: {point: "-"},
+		methods: {
+			add: function() {
+				$.post("point",
+				 	{point:10}
+				).done(function(data) {
+					vue.point = data
+				})
+			}
+		}
+	})
+	$.get(
+	"/point"
+	).done(function(data) {
+		vue.point = data
+	})
+
 });
 		</script>
 	</head>
 	<body>
-
+		<div id="app">
+			{{point}}
+			<button @click="add">add</button>
+		</div>
 	</body>
 </html>
