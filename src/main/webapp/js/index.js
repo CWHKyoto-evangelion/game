@@ -39,4 +39,6 @@ $(function() {
 	).done(function(data) {
 		vue.point = data
 	})
+
+	$("img.character").draggable();
 });
